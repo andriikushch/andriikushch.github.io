@@ -9,6 +9,8 @@ categories: transfer learning traffic light detection
 
 Transfer learning is one of the technics which can be in use while doing the machine learning that allows using already trained models to solve similar problems. For instance, given the model which can detect the traffic lights, we want to distinguish between traffic lights color.
 
+In this article, I collected some useful resources that can help you to do that.
+
 ## Environment
 
 To complete a given task, we need to have a proper environment with GPU support. Possible solution providers might be Google Cloud or AWS.
@@ -21,13 +23,13 @@ As the starting point, we can use the following repo. The full tutorial is [here
 
 ## Try it
 
-To see the object detection in action, we will need the Jupyter Notebook. When you have it, open the `models/research/object_detection/object_detection_tutorial.ipynb` and go through the book to see that you have all the necessary modules.
+To see the object detection in action, we will need the Jupyter Notebook. When you have it, open the [https://github.com/tensorflow/models/blob/master/research/object_detection/object_detection_tutorial.ipynb](https://github.com/tensorflow/models/blob/master/research/object_detection/object_detection_tutorial.ipynb) and go through the python book to see that you have all the necessary modules and it works.
 
-I used my image to see what current model can detect on the given image, for sure you can use yours:
+I used my image to see what current model from tutorial can detect on the given image, for sure you can use your image for that:
 
 ![basic_network_recognition](/assets/images/basic_network_recognition.png)
 
-As we see detected traffic light has a generic "traffic light" label. This result is what we want to change.
+As we see: detected traffic light has a generic "traffic light" label. This result is what we want to change to be more specific.
 
 ## Image labeling 
 
@@ -36,13 +38,15 @@ To retrain the model, we need to prepare the training data. For that, we can use
 1. [https://www.uni-ulm.de/en/in/driveu/projects/driveu-traffic-light-dataset](https://www.uni-ulm.de/en/in/driveu/projects/driveu-traffic-light-dataset)
 2. [https://www.kaggle.com/mbornoe/lisa-traffic-light-dataset](https://www.kaggle.com/mbornoe/lisa-traffic-light-dataset)
 
-Or we can create our own. If you decide to go this way,  this process can be done in an automated way or manually. In case if we would like to do it manually, there are some tools which can help us, for example [https://github.com/opencv/cvat](https://github.com/opencv/cvat). Here is a screenshot of cvat UI:
+Or we can create our own. If you decide to go this way,  this process can be done in an automated way or manually. In case if we would like to do it manually, there are some tools which can help us, for example [https://github.com/opencv/cvat](https://github.com/opencv/cvat). 
+
+Cvat UI:
 
 ![label_creation](/assets/images/label_creation.png)
 
 I like this tool because there is a possibility to run it inside a docker container without any extra installation steps, and it is easy to use.
 
-After you finish, you can export results as `COCO JSON` format. And convert to TFRecords with `research/object_detection/dataset_tools/create_coco_tf_record.py` from the `tensorflow/models` repository.
+After you finish, you can export results as `COCO JSON` format. And convert to TFRecords with [https://github.com/tensorflow/models/blob/master/research/object_detection/dataset_tools/create_coco_tf_record.py](https://github.com/tensorflow/models/blob/master/research/object_detection/dataset_tools/create_coco_tf_record.py).
 
 ## Learning 
 
@@ -70,4 +74,4 @@ Looks pretty good!
 
 This article was a brief overview of resources and approaches to transfer learning using existing AI tools. How, without an in-depth knowledge of Cloud Computing and Deep Learning in a short time, you can create an outstanding production-ready solution. Area of application is limited only by the imagination and passion for learning and creating.
 
-Thank you for reading and I wish you all the best!
+Thank you for reading, and I wish you all the best!
