@@ -2,7 +2,7 @@
 layout: post
 title:  "Transfer learning for traffic light detection"
 date:   2019-09-15 12:00:09 +0200
-categories: transfer learning traffic light detection
+categories: posts
 ---
 
 ## Transfer learning
