@@ -46,7 +46,7 @@ In this chapter, you are learning about the Udacity interface and have a quick o
 
 ### 2.Bayesian Thinking
 
-I found this part one of the most exciting and useful for me. It fits ideally students who want to recap their knowledge in probability theory. Meanwhile, I think people without a math background can find it complicated and can lose some motivation. The material provided in this chapter, in my personal opinion, not enough to fully understand the topic.
+I found this part one of the most exciting and useful for me. It fits ideally students who want to recap their knowledge in probability theory. Meanwhile, I think people without a math background can find it complicated and can lose some motivation. The material provided in this chapter, in my personal opinion, is not enough to fully understand the topic.
 
 There are a lot of materials online about bayesian probability and probability distributions you can learn before taking a class. For example, I found this book from Head First [http://shop.oreilly.com/product/9780596527587.do](http://shop.oreilly.com/product/9780596527587.do) quite useful to learn about statistics basis.
 
