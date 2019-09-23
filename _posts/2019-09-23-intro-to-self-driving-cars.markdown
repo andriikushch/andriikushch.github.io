@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Review of \"Intro to Self-Driving Cars Nanodegree Program\""
+title:  "Review of \"Intro to Self-Driving Cars Nanodegree Program\" by Udacity"
 date:   2019-09-23 12:00:09 +0200
 categories: posts
 ---
