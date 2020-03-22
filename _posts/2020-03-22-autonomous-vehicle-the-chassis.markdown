@@ -28,7 +28,7 @@ Looking closer, we see that it has:
 
 ![car3](/assets/images/1/car_3.jpg)
 
-I got it already assembled. It simplified a task for me. Also, it has a preinstalled Raspbian, so I was able to run the OS in Raspberry Pi 3 and log in.
+I got it already assembled. It simplified a task for me. Also, it has a preinstalled Raspbian, so I was able to run the OS on Raspberry Pi 3 and log in.
 
 After connecting to the wifi, the first things I did were enabling **ssh** and **i2c** options in Raspbian config. You can do it with `sudo raspi-config` or via a graphical interface. 
 
