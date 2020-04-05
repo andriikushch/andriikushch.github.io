@@ -54,7 +54,7 @@ PWM uses two parameters to transform current from the `Pic 1` to `Pic 2` or `Pic
 
 Based on the knowledge about PWM, let's add speed control to our RC car.
 
-[link to the github](https://github.com/andriikushch/andriikushch.github.io/blob/master/assets/code/2/main.py)
+[link to the github](https://github.com/andriikushch/andriikushch.github.io/blob/master/assets/code/2/main2.py)
 
 ```python
 import RPi.GPIO as GPIO
