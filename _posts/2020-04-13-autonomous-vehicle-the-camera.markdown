@@ -88,7 +88,7 @@ Now on your PC, which should be in the same network as Raspberry PI, open browse
 http://<YOUR_RASPBERRY_PI_IP_ADDRESS>:8080/?action=stream
 ```
 
-There you should see the video stream from the USB camera.
+There you should see the video stream from the camera.
 
 {:.text-align-center}
 ![anim.gif](/assets/images/3/anim.gif)
