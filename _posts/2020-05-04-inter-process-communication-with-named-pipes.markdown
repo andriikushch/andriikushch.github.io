@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Inter-process communication with named pipes"
-date:   2020-05-02 12:00:09 +0200
+date:   2020-05-04 12:00:09 +0200
 categories: posts
 ---
 One of the simplest ways to implement inter-process communication is a named pipe, aka `fifo`. Because of the universal i/o model, the use of this approach is very similar to the sharing data with a regular file, but in the case of `fifo`, there is no writing to the filesystem.
