@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Inter-process communication with named pipes"
-date:   2020-05-02 12:00:09 +0200
+date:   2020-05-04 12:00:09 +0200
 categories: posts
 permalink: /:collection/:title
 ---
