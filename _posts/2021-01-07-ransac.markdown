@@ -39,7 +39,7 @@ The second question is how many times we have to repeat this algorithm to find a
 
 # Implementation
 
-Here is the Python code that implements this algorithm. [ransac.py](/assets/code/5/ransac.py)
+Here is the Python code that implements this algorithm. [ransac.py](https://github.com/andriikushch/andriikushch.github.io/blob/master/assets/code/5/ransac.py)
 
 ```python
 import random
