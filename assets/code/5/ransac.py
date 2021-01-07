@@ -1,8 +1,6 @@
 import random
 import math
 
-from sklearn.datasets import make_regression
-from matplotlib import pyplot
 import numpy as np
 
 def distance(x, y, a, b, c):
