@@ -40,7 +40,7 @@ def ransac(input_data, iterations=10, threshold=0.1):
                            random_point_2[1])
 
         for point in data:
-            d = distance(point[0], point[1], a, b, c)
+            d = distance(point[0], point[1], tmp_a, tmp_b, tmp_c)
 
             if d < threshold:
                 tmp_inliers.append(point)
