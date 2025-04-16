@@ -9,4 +9,10 @@
     {%- include google-analytics.html -%}
     {%- endif -%}
     {%- include custom-head.html -%}
+
+    {% if jekyll.environment == "production" %}
+    <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+    {% else %}
+    <script async src="https://scripts.simpleanalyticscdn.com/latest.dev.js"></script>
+    {% endif %}
 </head>
