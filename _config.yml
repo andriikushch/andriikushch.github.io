@@ -20,7 +20,7 @@
 
 title: Andrii Kushch Blog
 description: >- # this means to ignore newlines until "baseurl:"
-  This is Andrii's Kushch personal blog about software development and programming on the whole.
+  Insights and experiences in software development and programming, shared by Andrii Kushch on his personal blog..
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://andriikushch.com" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: AndriiKushch
