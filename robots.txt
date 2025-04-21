@@ -5,6 +5,7 @@ sitemap: false
 
 User-agent: *
 Disallow: /privacy-policy/
+Disallow: /terms-of-service/
 
 User-agent: GPTBot
 Disallow: /
