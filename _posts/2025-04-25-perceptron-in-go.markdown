@@ -3,6 +3,7 @@ layout: post
 title:  "Perceptron in Go"
 date:   2025-04-25 12:00:09 +0200
 categories: posts
+permalink: /:collection/:title
 ---
 
 ## What is it all about
