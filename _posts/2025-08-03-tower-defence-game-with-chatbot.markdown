@@ -11,6 +11,8 @@ permalink: /:collection/:title
 ![logo.png](/assets/images/8/logo.png){:style="float: left; width:20%; margin-right: 30px; margin-bottom: 30px"}
 TL;DR: I had an idea to create a small game within a few hours, despite having no previous experience in game development, no fancy tools, and relying on a free chatbot to guide me on that journey. It didn't work as expected. However, it became an enjoyable experience that I want to share with you.
 
+(Note: The character icons and the welcome screen image were created with the help of AI.)
+
 To see the final result, please click [here.](/td-v-0-0-1)
 
 <div style="clear:both;"></div>
