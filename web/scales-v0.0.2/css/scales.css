@@ -1,0 +1,781 @@
+
+body {
+    margin: 0;
+    background: #111;
+    color: #eee;
+    font-family: sans-serif;
+}
+
+#tabs {
+    display: flex;
+    padding: 5px;
+}
+
+.tab {
+    background: #333;
+    margin-right: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    user-select: none;
+}
+
+.tab.active {
+    background: #555;
+}
+
+#controls {
+    background: #222;
+    padding: 5px;
+    user-select: none;
+}
+
+.vol-label {
+    font-size: 0.8em;
+    margin: 0 4px;
+}
+
+#globalVol {
+    width: 60px;
+    vertical-align: middle;
+}
+
+.window {
+    position: absolute;
+    width: 300px;
+    height: 350px;
+    background: #222;
+    border: 1px solid #555;
+    border-radius: 5px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.header {
+    background: #444;
+    cursor: grab;
+    padding: 4px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+    touch-action: none;
+}
+
+.resize-handle {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 22px;
+    height: 22px;
+    cursor: nwse-resize;
+    touch-action: none;
+    background: linear-gradient(
+        135deg,
+        transparent 40%,
+        #666 40%, #666 50%,
+        transparent 50%,
+        transparent 65%,
+        #666 65%, #666 75%,
+        transparent 75%
+    );
+    border-radius: 0 0 4px 0;
+    z-index: 10;
+}
+
+.close-btn {
+    cursor: pointer;
+    padding: 0 8px;
+    font-size: 18px;
+    user-select: none;
+}
+
+
+.content {
+    box-sizing: border-box;
+    flex: 1;
+    overflow: hidden;
+    padding: 5px;
+}
+
+/* ── Chord context menu ──────────────────────── */
+
+.chord-ctx-menu {
+    position: fixed;
+    z-index: 99999;
+    background: #1e1e1e;
+    border: 1px solid #444;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+    min-width: 170px;
+    overflow: hidden;
+    padding: 4px 0;
+    font-size: 13px;
+    font-family: sans-serif;
+    user-select: none;
+}
+
+.chord-ctx-title {
+    padding: 6px 14px 5px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #eee;
+    border-bottom: 1px solid #333;
+    margin-bottom: 3px;
+    letter-spacing: 0.3px;
+}
+
+.chord-ctx-item {
+    padding: 7px 14px;
+    color: #ccc;
+    cursor: pointer;
+    transition: background 0.1s, color 0.1s;
+}
+
+.chord-ctx-item:hover {
+    background: #2e2e2e;
+    color: #fff;
+}
+
+.chord-ctx-item:active {
+    background: #383838;
+}
+
+/* ── Form controls ───────────────────────────── */
+
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: #252525;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23777'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 9px 5px;
+    color: #ddd;
+    border: 1px solid #3a3a3a;
+    border-radius: 5px;
+    padding: 4px 26px 4px 8px;
+    font-size: 12px;
+    margin: 2px;
+    cursor: pointer;
+    transition: border-color 0.15s, background-color 0.15s;
+    outline: none;
+}
+
+select:hover {
+    border-color: #555;
+    background-color: #2e2e2e;
+}
+
+select:focus {
+    border-color: #5a7fa8;
+    box-shadow: 0 0 0 2px rgba(90, 127, 168, 0.2);
+}
+
+button {
+    background: #2d2d2d;
+    color: #ccc;
+    border: 1px solid #3d3d3d;
+    border-radius: 5px;
+    padding: 4px 10px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background-color 0.15s, border-color 0.15s, color 0.15s;
+    outline: none;
+    user-select: none;
+}
+
+button:hover {
+    background: #3a3a3a;
+    border-color: #585858;
+    color: #eee;
+}
+
+button:active {
+    background: #222;
+    border-color: #444;
+    transform: translateY(1px);
+}
+
+input[type="text"] {
+    background: #252525;
+    color: #ddd;
+    border: 1px solid #3a3a3a;
+    border-radius: 5px;
+    padding: 4px 8px;
+    font-size: 12px;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+input[type="text"]:hover {
+    border-color: #555;
+}
+
+input[type="text"]:focus {
+    border-color: #5a7fa8;
+    box-shadow: 0 0 0 2px rgba(90, 127, 168, 0.2);
+}
+
+input[type="checkbox"] {
+    accent-color: #5a7fa8;
+    width: 13px;
+    height: 13px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+/* Controls bar layout */
+.controls-container {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 3px;
+    padding: 3px 0 6px;
+}
+
+.controls-container label {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    color: #aaa;
+    cursor: pointer;
+    padding: 3px 7px;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    user-select: none;
+    white-space: nowrap;
+    transition: background-color 0.12s, border-color 0.12s;
+}
+
+.controls-container label:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.08);
+    color: #ccc;
+}
+
+.suggestion-box {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    display: none;
+    max-height: 180px;
+    overflow-y: auto;
+    z-index: 9999;
+}
+
+
+.suggestion-box div {
+    color: #222222;
+}
+
+.suggestion-box div:hover {
+    background-color: #333333;
+    color: #cccccc;
+}
+
+#controls {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 8px 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#controls .controls-right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+#controls .top-links a {
+    color: #545454;
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+#controls .top-links a:hover {
+    text-decoration: underline;
+}
+
+#tabs-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 0 10px;
+    min-height: 40px;
+    font-size: 0.9rem;
+    overflow-x: auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#tabs {
+    flex: 1 1 auto;
+    display: flex;
+}
+
+.disclaimer {
+    flex-shrink: 1;
+    min-width: 0;
+    color: #a00;
+    font-weight: 600;
+    font-size: 0.65rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+.fretboard-wrapper {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    max-width: 100%;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.fretboard-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+/* ── Greeting popup ──────────────────────────── */
+
+#greeting-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99998;
+}
+
+#greeting-popup {
+    background: #1e1e1e;
+    border: 1px solid #444;
+    border-radius: 12px;
+    padding: 28px 32px 24px;
+    max-width: 420px;
+    width: calc(100% - 32px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.7);
+    text-align: center;
+}
+
+#greeting-popup h2 {
+    margin: 0 0 8px;
+    font-size: 1.4rem;
+    color: #eee;
+}
+
+#greeting-popup p {
+    margin: 0 0 20px;
+    font-size: 0.85rem;
+    color: #888;
+    line-height: 1.5;
+}
+
+#greeting-popup .tool-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+#greeting-popup .tool-btn {
+    padding: 10px 8px;
+    font-size: 0.8rem;
+    border-radius: 7px;
+    background: #2a2a2a;
+    border: 1px solid #3a3a3a;
+    color: #ccc;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+    text-align: center;
+}
+
+#greeting-popup .tool-btn:hover {
+    background: #363636;
+    border-color: #555;
+    color: #fff;
+}
+
+#greeting-popup .skip-btn {
+    background: none;
+    border: none;
+    color: #555;
+    font-size: 0.75rem;
+    cursor: pointer;
+    padding: 4px 8px;
+    transition: color 0.15s;
+}
+
+#greeting-popup .skip-btn:hover {
+    color: #888;
+}
+
+@media (max-width: 768px) {
+    select, button, input[type="text"], input[type="range"] {
+        min-height: 44px;
+        font-size: 16px;
+        padding: 6px 12px;
+    }
+    select {
+        padding-right: 32px;
+    }
+    .controls-container {
+        gap: 6px;
+    }
+    #controls .top-links {
+        display: none;
+    }
+    #controls input[type="range"] {
+        width: 80px;
+        min-height: 32px;
+    }
+}
+.circle-of-fifths {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    border: 2px solid #888;
+    position: relative;
+    user-select: none;
+}
+
+/* Color coding for chords */
+.circle-of-fifths .note {
+    position: absolute;
+    border-radius: 50%;
+    padding: 4px;
+    width: 50px;
+    height: 50px;
+    background: #333;
+    border: 1px solid #666;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.3s, transform 0.2s;
+    cursor: pointer;
+    color: #eee;
+    text-align: center;
+    user-select: none;
+}
+
+.circle-of-fifths .note:hover {
+    background: #666;
+    transform: scale(1.1);
+}
+
+.circle-of-fifths .note.major {
+    background: #444488;
+}
+
+.circle-of-fifths .note.minor {
+    background: #884444;
+}
+
+.circle-of-fifths .note.selected {
+    background: #88aaff !important;
+}.fretboard {
+  display: grid;
+  gap: 2px;
+  user-select: none;
+  font-family: monospace;
+  background: #1a1a1a;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.fret-number {
+  color: #666;
+  font-size: 11px;
+  text-align: center;
+  letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 16px;
+}
+
+.string-label {
+  color: #ccc;
+  font-weight: bold;
+  font-size: 13px;
+  text-align: center;
+  background: #2d2d2d;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 20px;
+}
+
+.fret {
+  background: #252525;
+  color: rgba(200, 200, 200, 0.12);
+  font-size: 13px;
+  text-align: center;
+  border-radius: 4px;
+  cursor: default;
+  user-select: none;
+  transition:
+    background-color 0.15s,
+    color 0.15s;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 20px;
+}
+
+.fret.scale-note {
+  color: #eee;
+  background-color: #444;
+  font-weight: bold;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.fret-number.highlight {
+  color: #fff;
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 3px;
+}
+
+/* ── Scale degree colors ─────────────────────── */
+/*
+ * Warm  = consonant (root, thirds, fifth, sixth)
+ * Cool  = dissonant / leading tones (2nds, tritone, 7ths)
+ */
+
+[class^="deg-"],
+[class*=" deg-"] {
+  color: #fff !important;
+  font-weight: bold !important;
+}
+
+/* Warm — consonant */
+.deg-1 {
+  background: #c03838;
+} /* root — vivid red        */
+.deg-b3 {
+  background: #c06020;
+} /* minor 3rd — burnt orange*/
+.deg-3 {
+  background: #b09020;
+} /* major 3rd — amber/gold  */
+.deg-4 {
+  background: #3a9a5c;
+} /* perfect 4th — warm green*/
+.deg-5 {
+  background: #2e7f2e;
+} /* perfect 5th — deep green*/
+.deg-6 {
+  background: #7a9a20;
+} /* major 6th — olive       */
+
+/* Cool — dissonant / leading */
+.deg-b2 {
+  background: #2a5faa;
+} /* minor 2nd — deep blue   */
+.deg-2 {
+  background: #3a72cc;
+} /* major 2nd — sky blue    */
+.deg-b5 {
+  background: #7040a8;
+} /* tritone — violet        */
+.deg-b6 {
+  background: #2a7a8a;
+} /* minor 6th — teal        */
+.deg-b7 {
+  background: #4460aa;
+} /* minor 7th — periwinkle  */
+.deg-7 {
+  background: #8840b0;
+} /* major 7th — purple      */
+
+/* Fallback (no degree map: chord builder, arpeggio) */
+.deg-note {
+  background: #3a5a7a;
+} /* generic chord tone — slate blue */
+.deg-neutral {
+  background: #3a3a3a;
+} /* non-scale selected note         */
+
+/* ── Cell selection ──────────────────────────── */
+
+.fret-selected {
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Dim unselected notes when a selection is active */
+.fretboard.has-selection [class*="deg-"]:not(.fret-selected) {
+  opacity: 0.3;
+  transition: opacity 0.15s ease;
+}
+
+[class*="deg-"] {
+  transition: opacity 0.15s ease;
+}
+
+/* ── Degree mode ─────────────────────────────── */
+
+.fretboard.show-degrees .fret,
+.fretboard.show-degrees .string-label {
+  flex-direction: column;
+  min-height: 32px;
+  padding: 2px;
+  font-size: 13px;
+}
+
+.note-name {
+  font-weight: bold;
+  font-size: 13px;
+  line-height: 1.2;
+}
+
+.note-degree {
+  font-size: 9px;
+  font-weight: 600;
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 3px;
+  padding: 1px 4px;
+  margin-top: 2px;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.3px;
+  line-height: 1.4;
+}
+
+/* Root note degree badge — slightly brighter */
+.fretboard.show-degrees
+  .fret[style*="background: rgb(34, 170, 34)"]
+  .note-degree,
+.fretboard.show-degrees .fret[style*="background: #2a2"] .note-degree {
+  background: rgba(0, 0, 0, 0.4);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* ── Chord cards ──────────────────────────────── */
+
+.chords-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  /* padding: 8px 10px; */
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: auto;
+  overflow-y: auto;
+  flex-shrink: 0;
+  max-height: 90px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.chords-container::-webkit-scrollbar {
+  display: none;
+}
+
+.chord-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 11px 6px;
+  border-radius: 7px;
+  min-width: 50px;
+  cursor: default;
+  transition:
+    transform 0.12s ease,
+    filter 0.12s ease;
+  flex-shrink: 0;
+}
+
+.chord-card:hover {
+  filter: brightness(1.25);
+}
+
+.chord-degree {
+  font-size: 10px;
+  font-weight: bold;
+  font-family: "Georgia", serif;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 2px;
+  letter-spacing: 0.5px;
+}
+
+.chord-card .chord-name {
+  font-size: 13px;
+  font-weight: bold;
+  font-family: sans-serif;
+  color: #fff;
+  letter-spacing: 0.2px;
+}
+
+/* Major — warm amber */
+.chord-card.chord-maj {
+  background: linear-gradient(160deg, #3d2800 0%, #2e1d00 100%);
+  border: 1px solid #8a6010;
+  box-shadow: 0 0 6px rgba(180, 120, 0, 0.12);
+}
+
+/* Minor — cool steel blue */
+.chord-card.chord-m {
+  background: linear-gradient(160deg, #0d2240 0%, #081830 100%);
+  border: 1px solid #2d6099;
+  box-shadow: 0 0 6px rgba(50, 100, 180, 0.12);
+}
+
+/* Diminished — muted crimson */
+.chord-card.chord-dim {
+  background: linear-gradient(160deg, #2a0e0e 0%, #1e0808 100%);
+  border: 1px solid #7a2828;
+  box-shadow: 0 0 6px rgba(140, 40, 40, 0.12);
+}
+
+/* Augmented — violet */
+.chord-card.chord-aug {
+  background: linear-gradient(160deg, #1e1035 0%, #150b28 100%);
+  border: 1px solid #6040a0;
+  box-shadow: 0 0 6px rgba(100, 60, 180, 0.12);
+}
+.degree-box {
+    font-family: Arial, sans-serif;
+}
+
+.sec-dom-box {
+    font-family: Arial, sans-serif;
+    color: #900;
+}.scale-match {
+    padding: 5px;
+    font-size: small;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.12s;
+}
+
+.scale-match:hover {
+    background: rgba(255, 255, 255, 0.07);
+}
+
+.scale-match progress{
+    accent-color: green;
+}

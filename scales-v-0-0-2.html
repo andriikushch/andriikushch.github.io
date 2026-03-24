@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'"
+    />
+    <title>
+      Interactive Music Theory Tools – Chords, Scales & Circle of Fifths
+    </title>
+    <meta
+      name="description"
+      content="Explore interactive music theory tools including a chord builder, scales visualizer, circle of fifths, arpeggio trainer, and secondary dominants. Perfect for guitarists, bassists, ukulele players, and more."
+    />
+    <meta
+      name="keywords"
+      content="music theory, guitar chords, bass chords, ukulele chords, mandolin chords, scales, circle of fifths, chord builder, arpeggios, secondary dominants, interactive fretboard"
+    />
+
+    <!-- Open Graph for social media -->
+    <meta
+      property="og:title"
+      content="Interactive Music Theory Tools – Chords, Scales & Circle of Fifths"
+    />
+    <meta
+      property="og:description"
+      content="Master chords, scales, and music theory with interactive tools for guitar, bass, ukulele, and mandolin."
+    />
+    <meta property="og:image" content="https://andriikushch.com/assets/images/scales-v-0-0-2/thumbnail.png" />
+    <meta property="og:url" content="https://andriikushch.com/scales-v-0-0-2" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Interactive Music Theory Tools – Chords, Scales & Circle of Fifths"
+    />
+    <meta
+      name="twitter:description"
+      content="Master chords, scales, and music theory with interactive tools for guitar, bass, ukulele, and mandolin."
+    />
+    <meta name="twitter:image" content="https://andriikushch.com/assets/images/scales-v-0-0-2/thumbnail.png" />
+
+    <!-- Indexing & canonical -->
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://andriikushch.com/scales-v-0-0-2" />
+
+    <!-- Additional Open Graph -->
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Interactive Music Theory Tools" />
+
+    <!-- Theme color for browser chrome -->
+    <meta name="theme-color" content="#111111" />
+
+    <!-- Structured data: WebApplication -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Interactive Music Theory Tools",
+      "description": "Free browser-based music theory tools for guitar, bass, ukulele, and mandolin. Includes chord builder, scale visualizer, circle of fifths, arpeggio trainer, secondary dominants analysis, and chord-to-scale matching.",
+      "url": "https://andriikushch.com/scales-v-0-0-2",
+      "applicationCategory": "EducationApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "Interactive fretboard for guitar, bass, ukulele, and mandolin",
+        "Chord builder with voicing finder and audio playback",
+        "Scale visualizer with fretboard diagram and audio playback",
+        "Circle of Fifths explorer",
+        "Arpeggio trainer",
+        "Secondary dominants analysis",
+        "Chord-to-scale matcher"
+      ]
+    }
+    </script>
+
+    <link rel="stylesheet" href="web/scales-v0.0.2/css/scales.css">
+  </head>
+  <body>
+    <noscript>
+      <div style="padding:2em;font-family:sans-serif;max-width:700px;margin:auto">
+        <h1>Interactive Music Theory Tools</h1>
+        <p>This app requires JavaScript. Please enable JavaScript in your browser to use the chord builder, scale visualizer, circle of fifths, arpeggio trainer, secondary dominants analysis, and chord-to-scale matcher.</p>
+      </div>
+    </noscript>
+
+    <div id="tabs-container">
+      <button id="addTabBtn">+</button>
+      <div id="tabs"></div>
+      <div class="disclaimer">
+        This is a beta version. The app may break or display incorrect
+        information, and changes might not be saved between sessions. Click
+        "Reset All" for a full reset.
+      </div>
+    </div>
+    <div id="controls">
+      <button id="addWinBtn">Add Window</button>
+      <select id="windowTypeSelect">
+        <option value="scales">Scales</option>
+        <option value="circle">Circle of Fifths</option>
+        <option value="chordbuilder">Chord Builder</option>
+        <option value="arpeggio">Arpeggio</option>
+        <option value="secondarydominants">Secondary Dominants</option>
+        <option value="chordscalematch">Chord Scale Matcher</option>
+      </select>
+      <button id="resetBtn">Reset All</button>
+      <span class="vol-label">Vol:</span>
+      <input
+        type="range"
+        id="globalVol"
+        min="0"
+        max="1"
+        step="0.05"
+        value="0.5"
+      />
+      <div class="controls-right">
+        <button id="saveTabBtn">Save Tab</button>
+        <button id="loadTabBtn">Load Tab</button>
+        <div class="top-links">
+          <a href="https://andriikushch.com/privacy-policy/" target="_blank">Privacy Policy</a> |
+          <a href="https://andriikushch.com/terms-of-use/" target="_blank">Terms of Use</a>
+          <span>v0.0.2</span>
+        </div>
+      </div>
+    </div>
+    <div id="container"></div>
+    <script src="web/scales-v0.0.2/js/scales.js"></script>
+  </body>
+</html>
