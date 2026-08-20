@@ -1,16 +1,13 @@
-
 body {
     margin: 0;
     background: #111;
     color: #eee;
     font-family: sans-serif;
 }
-
 #tabs {
     display: flex;
     padding: 5px;
 }
-
 .tab {
     background: #333;
     margin-right: 5px;
@@ -19,27 +16,22 @@ body {
     border-radius: 5px;
     user-select: none;
 }
-
 .tab.active {
     background: #555;
 }
-
 #controls {
     background: #222;
     padding: 5px;
     user-select: none;
 }
-
 .vol-label {
     font-size: 0.8em;
     margin: 0 4px;
 }
-
 #globalVol {
     width: 60px;
     vertical-align: middle;
 }
-
 .window {
     position: absolute;
     width: 300px;
@@ -52,7 +44,6 @@ body {
     flex-direction: column;
     box-sizing: border-box;
 }
-
 .header {
     background: #444;
     cursor: grab;
@@ -64,7 +55,6 @@ body {
     user-select: none;
     touch-action: none;
 }
-
 .resize-handle {
     position: absolute;
     right: 0;
@@ -74,35 +64,29 @@ body {
     cursor: nwse-resize;
     touch-action: none;
     background: linear-gradient(
-        135deg,
-        transparent 40%,
-        #666 40%, #666 50%,
-        transparent 50%,
-        transparent 65%,
-        #666 65%, #666 75%,
-        transparent 75%
+            135deg,
+            transparent 40%,
+            #666 40%, #666 50%,
+            transparent 50%,
+            transparent 65%,
+            #666 65%, #666 75%,
+            transparent 75%
     );
     border-radius: 0 0 4px 0;
     z-index: 10;
 }
-
 .close-btn {
     cursor: pointer;
     padding: 0 8px;
     font-size: 18px;
     user-select: none;
 }
-
-
 .content {
     box-sizing: border-box;
     flex: 1;
     overflow: hidden;
     padding: 5px;
 }
-
-/* ── Chord context menu ──────────────────────── */
-
 .chord-ctx-menu {
     position: fixed;
     z-index: 99999;
@@ -117,7 +101,6 @@ body {
     font-family: sans-serif;
     user-select: none;
 }
-
 .chord-ctx-title {
     padding: 6px 14px 5px;
     font-weight: bold;
@@ -127,25 +110,34 @@ body {
     margin-bottom: 3px;
     letter-spacing: 0.3px;
 }
-
+.scale-info-popover {
+    display: none;
+    position: fixed;
+    width: 320px;
+    max-width: calc(100vw - 16px);
+    background: #1e1e1e;
+    border: 1px solid #444;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+    padding: 8px 10px;
+    font-size: 13px;
+    line-height: 1.4;
+    color: #ccc;
+    z-index: 1000;
+}
 .chord-ctx-item {
     padding: 7px 14px;
     color: #ccc;
     cursor: pointer;
     transition: background 0.1s, color 0.1s;
 }
-
 .chord-ctx-item:hover {
     background: #2e2e2e;
     color: #fff;
 }
-
 .chord-ctx-item:active {
     background: #383838;
 }
-
-/* ── Form controls ───────────────────────────── */
-
 select {
     appearance: none;
     -webkit-appearance: none;
@@ -164,17 +156,14 @@ select {
     transition: border-color 0.15s, background-color 0.15s;
     outline: none;
 }
-
 select:hover {
     border-color: #555;
     background-color: #2e2e2e;
 }
-
 select:focus {
     border-color: #5a7fa8;
     box-shadow: 0 0 0 2px rgba(90, 127, 168, 0.2);
 }
-
 button {
     background: #2d2d2d;
     color: #ccc;
@@ -187,19 +176,16 @@ button {
     outline: none;
     user-select: none;
 }
-
 button:hover {
     background: #3a3a3a;
     border-color: #585858;
     color: #eee;
 }
-
 button:active {
     background: #222;
     border-color: #444;
     transform: translateY(1px);
 }
-
 input[type="text"] {
     background: #252525;
     color: #ddd;
@@ -210,16 +196,13 @@ input[type="text"] {
     outline: none;
     transition: border-color 0.15s, box-shadow 0.15s;
 }
-
 input[type="text"]:hover {
     border-color: #555;
 }
-
 input[type="text"]:focus {
     border-color: #5a7fa8;
     box-shadow: 0 0 0 2px rgba(90, 127, 168, 0.2);
 }
-
 input[type="checkbox"] {
     accent-color: #5a7fa8;
     width: 13px;
@@ -227,8 +210,6 @@ input[type="checkbox"] {
     cursor: pointer;
     flex-shrink: 0;
 }
-
-/* Controls bar layout */
 .controls-container {
     display: flex;
     align-items: center;
@@ -236,7 +217,6 @@ input[type="checkbox"] {
     gap: 3px;
     padding: 3px 0 6px;
 }
-
 .controls-container label {
     display: inline-flex;
     align-items: center;
@@ -251,13 +231,11 @@ input[type="checkbox"] {
     white-space: nowrap;
     transition: background-color 0.12s, border-color 0.12s;
 }
-
 .controls-container label:hover {
     background: rgba(255, 255, 255, 0.05);
     border-color: rgba(255, 255, 255, 0.08);
     color: #ccc;
 }
-
 .suggestion-box {
     position: absolute;
     top: 100%;
@@ -272,17 +250,13 @@ input[type="checkbox"] {
     overflow-y: auto;
     z-index: 9999;
 }
-
-
 .suggestion-box div {
     color: #222222;
 }
-
 .suggestion-box div:hover {
     background-color: #333333;
     color: #cccccc;
 }
-
 #controls {
     display: flex;
     align-items: center;
@@ -292,24 +266,20 @@ input[type="checkbox"] {
     width: 100%;
     box-sizing: border-box;
 }
-
 #controls .controls-right {
     margin-left: auto;
     display: flex;
     align-items: center;
     gap: 6px;
 }
-
 #controls .top-links a {
     color: #545454;
     text-decoration: none;
     margin: 0 5px;
 }
-
 #controls .top-links a:hover {
     text-decoration: underline;
 }
-
 #tabs-container {
     display: flex;
     align-items: center;
@@ -321,12 +291,10 @@ input[type="checkbox"] {
     width: 100%;
     box-sizing: border-box;
 }
-
 #tabs {
     flex: 1 1 auto;
     display: flex;
 }
-
 .disclaimer {
     flex-shrink: 1;
     min-width: 0;
@@ -337,8 +305,6 @@ input[type="checkbox"] {
     overflow: hidden;
     text-overflow: ellipsis;
 }
-
-
 .fretboard-wrapper {
     overflow-x: auto;
     overflow-y: hidden;
@@ -347,13 +313,9 @@ input[type="checkbox"] {
     scrollbar-width: none;
     -ms-overflow-style: none;
 }
-
 .fretboard-wrapper::-webkit-scrollbar {
     display: none;
 }
-
-/* ── Greeting popup ──────────────────────────── */
-
 #greeting-overlay {
     position: fixed;
     inset: 0;
@@ -363,7 +325,6 @@ input[type="checkbox"] {
     justify-content: center;
     z-index: 99998;
 }
-
 #greeting-popup {
     background: #1e1e1e;
     border: 1px solid #444;
@@ -374,27 +335,23 @@ input[type="checkbox"] {
     box-shadow: 0 16px 48px rgba(0, 0, 0, 0.7);
     text-align: center;
 }
-
 #greeting-popup h2 {
     margin: 0 0 8px;
     font-size: 1.4rem;
     color: #eee;
 }
-
 #greeting-popup p {
     margin: 0 0 20px;
     font-size: 0.85rem;
     color: #888;
     line-height: 1.5;
 }
-
 #greeting-popup .tool-buttons {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 8px;
     margin-bottom: 16px;
 }
-
 #greeting-popup .tool-btn {
     padding: 10px 8px;
     font-size: 0.8rem;
@@ -406,13 +363,11 @@ input[type="checkbox"] {
     transition: background 0.15s, border-color 0.15s, color 0.15s;
     text-align: center;
 }
-
 #greeting-popup .tool-btn:hover {
     background: #363636;
     border-color: #555;
     color: #fff;
 }
-
 #greeting-popup .skip-btn {
     background: none;
     border: none;
@@ -422,11 +377,9 @@ input[type="checkbox"] {
     padding: 4px 8px;
     transition: color 0.15s;
 }
-
 #greeting-popup .skip-btn:hover {
     color: #888;
 }
-
 @media (max-width: 768px) {
     select, button, input[type="text"], input[type="range"] {
         min-height: 44px;
@@ -455,8 +408,6 @@ input[type="checkbox"] {
     position: relative;
     user-select: none;
 }
-
-/* Color coding for chords */
 .circle-of-fifths .note {
     position: absolute;
     border-radius: 50%;
@@ -475,307 +426,257 @@ input[type="checkbox"] {
     text-align: center;
     user-select: none;
 }
-
 .circle-of-fifths .note:hover {
     background: #666;
     transform: scale(1.1);
 }
-
 .circle-of-fifths .note.major {
     background: #444488;
 }
-
 .circle-of-fifths .note.minor {
     background: #884444;
 }
-
 .circle-of-fifths .note.selected {
     background: #88aaff !important;
 }.fretboard {
-  display: grid;
-  gap: 2px;
-  user-select: none;
-  font-family: monospace;
-  background: #1a1a1a;
-  padding: 10px;
-  border-radius: 8px;
-}
-
+     display: grid;
+     gap: 2px;
+     user-select: none;
+     font-family: monospace;
+     background: #1a1a1a;
+     padding: 10px;
+     border-radius: 8px;
+ }
 .fret-number {
-  color: #666;
-  font-size: 11px;
-  text-align: center;
-  letter-spacing: -0.5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 16px;
+    color: #666;
+    font-size: 11px;
+    text-align: center;
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 16px;
 }
-
 .string-label {
-  color: #ccc;
-  font-weight: bold;
-  font-size: 13px;
-  text-align: center;
-  background: #2d2d2d;
-  border-radius: 3px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 20px;
+    color: #ccc;
+    font-weight: bold;
+    font-size: 13px;
+    text-align: center;
+    background: #2d2d2d;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 20px;
 }
-
 .fret {
-  background: #252525;
-  color: rgba(200, 200, 200, 0.12);
-  font-size: 13px;
-  text-align: center;
-  border-radius: 4px;
-  cursor: default;
-  user-select: none;
-  transition:
-    background-color 0.15s,
-    color 0.15s;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 20px;
+    background: #252525;
+    color: rgba(200, 200, 200, 0.12);
+    font-size: 13px;
+    text-align: center;
+    border-radius: 4px;
+    cursor: default;
+    user-select: none;
+    transition:
+            background-color 0.15s,
+            color 0.15s;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 20px;
 }
-
 .fret.scale-note {
-  color: #eee;
-  background-color: #444;
-  font-weight: bold;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #eee;
+    background-color: #444;
+    font-weight: bold;
+    border: 1px solid rgba(255, 255, 255, 0.15);
 }
-
 .fret-number.highlight {
-  color: #fff;
-  font-weight: bold;
-  background: rgba(255, 255, 255, 0.07);
-  border-radius: 3px;
+    color: #fff;
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.07);
+    border-radius: 3px;
 }
-
-/* ── Scale degree colors ─────────────────────── */
 /*
  * Warm  = consonant (root, thirds, fifth, sixth)
  * Cool  = dissonant / leading tones (2nds, tritone, 7ths)
  */
-
 [class^="deg-"],
 [class*=" deg-"] {
-  color: #fff !important;
-  font-weight: bold !important;
+    color: #fff !important;
+    font-weight: bold !important;
 }
-
-/* Warm — consonant */
 .deg-1 {
-  background: #c03838;
-} /* root — vivid red        */
+    background: #c03838;
+} 
 .deg-b3 {
-  background: #c06020;
-} /* minor 3rd — burnt orange*/
+    background: #c06020;
+} 
 .deg-3 {
-  background: #b09020;
-} /* major 3rd — amber/gold  */
+    background: #b09020;
+} 
 .deg-4 {
-  background: #3a9a5c;
-} /* perfect 4th — warm green*/
+    background: #3a9a5c;
+} 
 .deg-5 {
-  background: #2e7f2e;
-} /* perfect 5th — deep green*/
+    background: #2e7f2e;
+} 
 .deg-6 {
-  background: #7a9a20;
-} /* major 6th — olive       */
-
-/* Cool — dissonant / leading */
+    background: #7a9a20;
+} 
 .deg-b2 {
-  background: #2a5faa;
-} /* minor 2nd — deep blue   */
+    background: #2a5faa;
+} 
 .deg-2 {
-  background: #3a72cc;
-} /* major 2nd — sky blue    */
+    background: #3a72cc;
+} 
 .deg-b5 {
-  background: #7040a8;
-} /* tritone — violet        */
+    background: #7040a8;
+} 
 .deg-b6 {
-  background: #2a7a8a;
-} /* minor 6th — teal        */
+    background: #2a7a8a;
+} 
 .deg-b7 {
-  background: #4460aa;
-} /* minor 7th — periwinkle  */
+    background: #4460aa;
+} 
 .deg-7 {
-  background: #8840b0;
-} /* major 7th — purple      */
-
-/* Fallback (no degree map: chord builder, arpeggio) */
+    background: #8840b0;
+} 
 .deg-note {
-  background: #3a5a7a;
-} /* generic chord tone — slate blue */
+    background: #3a5a7a;
+} 
 .deg-neutral {
-  background: #3a3a3a;
-} /* non-scale selected note         */
-
-/* ── Cell selection ──────────────────────────── */
-
+    background: #3a3a3a;
+} 
 .fret-selected {
-  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.9) !important;
+    box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.9) !important;
 }
-
-/* Dim unselected notes when a selection is active */
 .fretboard.has-selection [class*="deg-"]:not(.fret-selected) {
-  opacity: 0.3;
-  transition: opacity 0.15s ease;
+    opacity: 0.3;
+    transition: opacity 0.15s ease;
 }
-
 [class*="deg-"] {
-  transition: opacity 0.15s ease;
+    transition: opacity 0.15s ease;
 }
-
-/* ── Degree mode ─────────────────────────────── */
-
 .fretboard.show-degrees .fret,
 .fretboard.show-degrees .string-label {
-  flex-direction: column;
-  min-height: 32px;
-  padding: 2px;
-  font-size: 13px;
+    flex-direction: column;
+    min-height: 32px;
+    padding: 2px;
+    font-size: 13px;
 }
-
 .note-name {
-  font-weight: bold;
-  font-size: 13px;
-  line-height: 1.2;
+    font-weight: bold;
+    font-size: 13px;
+    line-height: 1.2;
 }
-
 .note-degree {
-  font-size: 9px;
-  font-weight: 600;
-  background: rgba(0, 0, 0, 0.35);
-  border-radius: 3px;
-  padding: 1px 4px;
-  margin-top: 2px;
-  color: rgba(255, 255, 255, 0.7);
-  letter-spacing: 0.3px;
-  line-height: 1.4;
+    font-size: 9px;
+    font-weight: 600;
+    background: rgba(0, 0, 0, 0.35);
+    border-radius: 3px;
+    padding: 1px 4px;
+    margin-top: 2px;
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 0.3px;
+    line-height: 1.4;
 }
-
-/* Root note degree badge — slightly brighter */
 .fretboard.show-degrees
-  .fret[style*="background: rgb(34, 170, 34)"]
-  .note-degree,
+.fret[style*="background: rgb(34, 170, 34)"]
+.note-degree,
 .fretboard.show-degrees .fret[style*="background: #2a2"] .note-degree {
-  background: rgba(0, 0, 0, 0.4);
-  color: rgba(255, 255, 255, 0.9);
+    background: rgba(0, 0, 0, 0.4);
+    color: rgba(255, 255, 255, 0.9);
 }
-
-/* ── Chord cards ──────────────────────────────── */
-
 .chords-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-  /* padding: 8px 10px; */
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  width: 100%;
-  box-sizing: border-box;
-  overflow-x: auto;
-  overflow-y: auto;
-  flex-shrink: 0;
-  max-height: 90px;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: auto;
+    overflow-y: auto;
+    flex-shrink: 0;
+    max-height: 90px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
-
 .chords-container::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
-
 .chord-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 5px 11px 6px;
-  border-radius: 7px;
-  min-width: 50px;
-  cursor: default;
-  transition:
-    transform 0.12s ease,
-    filter 0.12s ease;
-  flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 11px 6px;
+    border-radius: 7px;
+    min-width: 50px;
+    cursor: default;
+    transition:
+            transform 0.12s ease,
+            filter 0.12s ease;
+    flex-shrink: 0;
 }
-
 .chord-card:hover {
-  filter: brightness(1.25);
+    filter: brightness(1.25);
 }
-
 .chord-degree {
-  font-size: 10px;
-  font-weight: bold;
-  font-family: "Georgia", serif;
-  color: rgba(255, 255, 255, 0.6);
-  margin-bottom: 2px;
-  letter-spacing: 0.5px;
+    font-size: 10px;
+    font-weight: bold;
+    font-family: "Georgia", serif;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 2px;
+    letter-spacing: 0.5px;
 }
-
 .chord-card .chord-name {
-  font-size: 13px;
-  font-weight: bold;
-  font-family: sans-serif;
-  color: #fff;
-  letter-spacing: 0.2px;
+    font-size: 13px;
+    font-weight: bold;
+    font-family: sans-serif;
+    color: #fff;
+    letter-spacing: 0.2px;
 }
-
-/* Major — warm amber */
 .chord-card.chord-maj {
-  background: linear-gradient(160deg, #3d2800 0%, #2e1d00 100%);
-  border: 1px solid #8a6010;
-  box-shadow: 0 0 6px rgba(180, 120, 0, 0.12);
+    background: linear-gradient(160deg, #3d2800 0%, #2e1d00 100%);
+    border: 1px solid #8a6010;
+    box-shadow: 0 0 6px rgba(180, 120, 0, 0.12);
 }
-
-/* Minor — cool steel blue */
 .chord-card.chord-m {
-  background: linear-gradient(160deg, #0d2240 0%, #081830 100%);
-  border: 1px solid #2d6099;
-  box-shadow: 0 0 6px rgba(50, 100, 180, 0.12);
+    background: linear-gradient(160deg, #0d2240 0%, #081830 100%);
+    border: 1px solid #2d6099;
+    box-shadow: 0 0 6px rgba(50, 100, 180, 0.12);
 }
-
-/* Diminished — muted crimson */
 .chord-card.chord-dim {
-  background: linear-gradient(160deg, #2a0e0e 0%, #1e0808 100%);
-  border: 1px solid #7a2828;
-  box-shadow: 0 0 6px rgba(140, 40, 40, 0.12);
+    background: linear-gradient(160deg, #2a0e0e 0%, #1e0808 100%);
+    border: 1px solid #7a2828;
+    box-shadow: 0 0 6px rgba(140, 40, 40, 0.12);
 }
-
-/* Augmented — violet */
 .chord-card.chord-aug {
-  background: linear-gradient(160deg, #1e1035 0%, #150b28 100%);
-  border: 1px solid #6040a0;
-  box-shadow: 0 0 6px rgba(100, 60, 180, 0.12);
+    background: linear-gradient(160deg, #1e1035 0%, #150b28 100%);
+    border: 1px solid #6040a0;
+    box-shadow: 0 0 6px rgba(100, 60, 180, 0.12);
 }
 .degree-box {
     font-family: Arial, sans-serif;
 }
-
 .sec-dom-box {
     font-family: Arial, sans-serif;
     color: #900;
 }.scale-match {
-    padding: 5px;
-    font-size: small;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background 0.12s;
-}
-
+     padding: 5px;
+     font-size: small;
+     cursor: pointer;
+     border-radius: 4px;
+     transition: background 0.12s;
+ }
 .scale-match:hover {
     background: rgba(255, 255, 255, 0.07);
 }
-
 .scale-match progress{
     accent-color: green;
 }
